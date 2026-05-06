@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Student Card Generator</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f0f0f0;
+            text-align: center;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 5px;
+            width: 200px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .card {
+            margin: 30px auto;
+            padding: 20px;
+            width: 250px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Student Card Generator</h2>
+
+        <input type="text" id="name" placeholder="Enter Name"><br>
+        <input type="number" id="age" placeholder="Enter Age"><br>
+        <input type="text" id="class" placeholder="Enter Class"><br>
+        <input type="text" id="image" placeholder="Enter Image URL"><br>
+
+        <button onclick="generateCard()">Generate Card</button>
+
+        <div id="output"></div>
+    </div>
+
+    <script>
+        function generateCard() {
+            // get values
+            let name = document.getElementById("name").value;
+            let age = document.getElementById("age").value;
+            let studentClass = document.getElementById("class").value;
+            let image = document.getElementById("image").value;
+
+            // create card
+            let card = document.createElement("div");
+            card.classList.add("card");
+
+            // add content
+            card.innerHTML = `
+        <h3>${name}</h3>
+        <p>Age: ${age}</p>
+        <p>Class: ${studentClass}</p>
+        <img src="${image}" alt="Student Image" style="width: 100%; height: auto;">
+      `;
+
+            // clear previous card
+            let output = document.getElementById("output");
+            output.innerHTML = "";
+
+            // show new card
+            output.appendChild(card);
+        }
+    </script>
+
+</body>
+
+</html>
